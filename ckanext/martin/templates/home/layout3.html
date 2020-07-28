@@ -1,0 +1,51 @@
+{% set show_default_blocks = False %}
+{% set show_wagtail_story = False %}
+
+<div role="main" class="hero">
+    <div class="container">
+      {% block search %}
+        {% snippet 'home/snippets/search.html' %}
+      {% endblock %}
+    </div>
+  </div>
+  <div role="main">
+    <div class="container">
+      <div class="row site-stats">
+
+        <div class="span4 col1">
+          {% block latestupdate %}
+            {% snippet 'home/snippets/latest-update.html' %}
+          {% endblock %}
+        </div>
+        <div class="span4 col2">
+          {% block recentlyadded %}
+            {% snippet 'home/snippets/recently-added.html' %}
+          {% endblock %}
+        </div>
+        <div class="span4 col3">
+          {% block mostviewed %}
+            {% snippet 'home/snippets/most-viewed.html' %}
+          {% endblock %}
+        </div>
+        {% if show_default_blocks %}
+        <div class="span4 col1">
+            {% block promoted %}
+              {% snippet 'home/snippets/promoted.html' %}
+            {% endblock %}
+        </div>
+        <div class="span4 col2">
+          {% block stats %}
+            {% snippet 'home/snippets/stats.html' %}
+          {% endblock %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% if show_wagtail_story %}
+  <div role="main" class="hero-story">
+    {% block featuredstory %}
+      {% snippet 'home/snippets/featured-story.html' %}
+    {% endblock %}
+  </div>
+{% endif %}
