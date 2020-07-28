@@ -1,0 +1,19 @@
+{% set datsets_exist = True %}
+{% set dataset_description = "Plymouth City Council's register of Brownfield Land suitable for housing development in accordance with legislation and Government guidance." %}
+{% set dataset_link = "/somewhere" %}
+
+<div class="module-content box">
+  <h2>Recently Added </h2>
+  {% if h.tdp_most_recently_added() %}
+    {% set dataset = h.tdp_most_recently_added() %}
+    <div class="module-container">
+      <span class="title module-heading">{{ dataset.title }}</span>
+      <p>{{ dataset.notes|truncate(280) }}</p>
+    </div>
+    {{ h.link_to(_('Visit Dataset'), h.url_for(dataset.type + '_read', controller='package', action='read', id=dataset.name), class='dataset-cta btn btn-primary') }}
+    {% else %}
+    {% block nodata %}
+      {% snippet 'home/snippets/no-data.html' %}
+    {% endblock %}
+  {% endif %}
+</div>

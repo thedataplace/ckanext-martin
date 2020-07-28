@@ -1,0 +1,32 @@
+<footer>
+  {% set footer_links = h.tdp_footer_links() %}
+  <div class="footer-container">
+  {% if footer_links %}
+    <div class="top-footer">
+      <ul class="list-unstyled">
+        {% for link in footer_links %}
+          <li>
+            <a href="{{link.link}}">
+              <img src="{{link.img}}" alt="{{link.link}}">
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    <div class="bottom-footer">
+      <ul class="list-unstyled">
+        <li><a href="{{ h.url_for(controller='package', action='read', id='site-policies') }}"> Cookies & Privacy </a></li>
+        <li><a href="{{ h.url_for(controller='package', action='read', id='site-policies') }}"> Code of Conduct </a></li>
+        <li><a href="{{ h.url_for(controller='package', action='read', id='site-policies') }}"> Data Policy </a></li>
+        {% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}
+        <li><a href="{{ api_url }}"> CKAN API </a></li>
+      </ul>
+    </div>
+  </div>
+  {% block footer_debug %}
+    {% if g.debug %}
+      {% include 'snippets/debug.html' %}
+    {% endif %}
+  {% endblock %}
+</footer>
