@@ -1,0 +1,57 @@
+{% ckan_extends %}
+
+{% block styles %}
+  {{ super() }}
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Rubik" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Serif" rel="stylesheet">
+  <link rel="stylesheet" href="/{{ h.tdp_stylesheet_name() }}.min.css" type="text/css">
+
+  {% set primary_colour = h.tdp_primary_colour() %}
+  {% set hover_colour = h.tdp_hover_colour() %}
+  {% set hero_image_url = h.tdp_hero_image_url() %}
+
+  <style>
+    .btn.btn-primary {
+        background: {{ primary_colour }};
+        border-color: {{ primary_colour }};
+    }
+    .btn.btn-primary:hover,
+    .btn.btn-primary:focus {
+        background: {{ hover_colour }};
+        border-color: {{ hover_colour }};
+    }
+    .module-heading {
+        color: {{ primary_colour }};
+    }
+    a,
+    .editor .editor-info-block a {
+        color: {{ primary_colour }};
+    }
+    .editor .editor-info-block a:hover,
+    .editor .editor-info-block a:focus,
+    a:hover {
+        color: {{ hover_colour }};
+    }
+    header.navbar.navbar-static-top.masthead .nav > li a:before {
+        background: {{ primary_colour }};
+    }
+    .filters .filter-title {
+        border-color: {{ primary_colour }};
+    }
+    header.navbar.navbar-static-top.masthead .nav>li.active a:before,
+    .filters .nav-item.active >a >span:nth-of-type(2) {
+        background: {{ primary_colour }};
+    }
+    .pill, .tag, a.tag {
+        background: {{ primary_colour }};
+    }
+    .filters .module-heading {
+        color: {{ primary_colour }};
+    }
+    {% if hero_image_url %}
+    .hero {
+        background-image: url({{ hero_image_url }});
+    }
+    {% endif %}
+  </style>
+{% endblock %}
